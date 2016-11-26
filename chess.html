@@ -5,6 +5,14 @@
     <title>HomeWork_lesson2_2</title>
 
     <style>
+     @font-face {font-family: "Chess Leipzig";    
+            src: url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.eot");
+            src: url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.eot?#iefix") format("embedded-opentype"),
+                url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.woff2") format("woff2"),
+                url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.woff") format("woff"),
+                url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.ttf") format("truetype"),
+                url("http://db.onlinewebfonts.com/t/3766f2535139acb76ae60fb465b731b5.svg#Chess Leipzig") format("svg");
+        }
     
         .main, #main1 {
             height: 300px;
@@ -68,7 +76,7 @@
             float: left;
         }
         .play{
-          
+          font-family: "Chess Leipzig";
         }
     </style>
 </head>
@@ -188,14 +196,19 @@
       }
 
       function addChess(arr){ //добавляю фигуры на доску
-        console.log (arr[0].figure);
-        
+       
         var cells=that.div_chess.children;
         cells = Array.prototype.slice.call(cells);
         console.log (cells[0]);
 
         cells.forEach(function(item, i, cells){
-        item.innerText=arr[i].figure?arr[i].figure:'' ;
+          if (arr[i].address.match(/[a-h][1-8]/i)) {
+            item.innerText=arr[i].figure?arr[i].figure:'' ;
+          }
+          else {
+            alert (i+'mistake'+arr[i].address);
+          }
+          
         })
       }
 
